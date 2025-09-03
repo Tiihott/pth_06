@@ -48,6 +48,7 @@ package com.teragrep.pth_06.planner;
 import java.io.IOException;
 import java.sql.*;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Set;
 
 import com.teragrep.pth_06.config.Config;
@@ -395,5 +396,21 @@ public class StreamDBClient {
                     .orderBy(logtimeForOrderBy, JOURNALDB.LOGFILE.ID.asc())
                     .asTable(innerTable);
         }
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        StreamDBClient cast = (StreamDBClient) object;
+        return includeBeforeEpoch == cast.includeBeforeEpoch && bloomEnabled == cast.bloomEnabled && Objects
+                .equals(LOGGER, cast.LOGGER) && Objects.equals(ctx, cast.ctx)
+                && Objects.equals(journaldbCondition, cast.journaldbCondition) && Objects.equals(walker, cast.walker);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(LOGGER, ctx, includeBeforeEpoch, bloomEnabled, journaldbCondition, walker);
     }
 }

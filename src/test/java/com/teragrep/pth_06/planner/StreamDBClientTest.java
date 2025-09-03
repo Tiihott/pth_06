@@ -47,6 +47,7 @@ package com.teragrep.pth_06.planner;
 
 import com.teragrep.pth_06.config.Config;
 import com.teragrep.pth_06.jooq.generated.journaldb.tables.records.LogfileRecord;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.jooq.*;
 import org.jooq.impl.DSL;
 import org.jooq.types.ULong;
@@ -395,5 +396,10 @@ class StreamDBClientTest {
         sdc.setIncludeBeforeEpoch(1696471200L);
         // Try to get the next hour from the slicetable, result should be a stub.
         Assertions.assertTrue(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
+    }
+
+    @Test
+    public void equalsHashCodeContractTest() {
+        EqualsVerifier.simple().forClass(StreamDBClient.class).verify();
     }
 }
