@@ -348,4 +348,52 @@ class StreamDBClientTest {
         sdc.deleteRangeFromSliceTable(1696377600L, 1696471200L);
         Assertions.assertTrue(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
     }
+
+    /**
+     * Testing setIncludeBeforeEpoch() method functionality.
+     */
+    @Test
+    public void setIncludeBeforeEpochTest() {
+        // Add test data to logfile table in journaldb.
+        final DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);
+        // Inserting logfile with logtime of 2023-10-05 02:00 UTC.
+        LogfileRecord logfileRecord = new LogfileRecord(
+                ULong.valueOf(1),
+                Date.valueOf("2023-10-5"),
+                Date.valueOf("2026-10-5"),
+                UShort.valueOf(1),
+                "2023/10-05/example.tg.dev.test/example/example.log-@1696471200-2023100502.log.gz",
+                null,
+                UShort.valueOf(1),
+                "example.log-@1696471200-2023100502.log.gz",
+                new Timestamp(2025, 8, 13, 16, 18, 22, 0),
+                ULong.valueOf(120L),
+                "sha256 checksum 1",
+                "archive tag 1",
+                "example",
+                UShort.valueOf(2),
+                UShort.valueOf(1),
+                ULong.valueOf(390L),
+                ULong.valueOf(1696471200L),
+                ULong.valueOf(4910716800L),
+                ULong.valueOf(1696464000L)
+        );
+        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();
+
+        // Assert StreamDBClient methods work as expected with the test data.
+        final Config config = testConfiguration();
+        final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
+
+        // Pull the records from a specific logdate to the slicetable for further processing.
+        int rows = sdc.pullToSliceTable(Date.valueOf("2023-10-5"));
+        Assertions.assertEquals(1, rows);
+
+        // Try to get the next hour from the slicetable using the default includeBeforeEpoch value, result should not be a stub.
+        Assertions.assertFalse(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
+
+        // Use setIncludeBeforeEpoch() to set the query condition for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-05 02:00 UTC or newer.
+        sdc.setIncludeBeforeEpoch(1696471200L);
+        // Try to get the next hour from the slicetable, result should be a stub.
+        Assertions.assertTrue(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
+    }
 }
