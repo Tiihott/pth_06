@@ -90,12 +90,12 @@ import static org.jooq.impl.DSL.*;
  * @author Motoko Kusanagi
  * @author Ville Manninen
  */
-public class StreamDBClient {
+public final class StreamDBClient {
 
     private final Logger LOGGER = LoggerFactory.getLogger(StreamDBClient.class);
 
     private final DSLContext ctx;
-    private long includeBeforeEpoch;
+    private final long includeBeforeEpoch;
     private final boolean bloomEnabled;
     private final Condition journaldbCondition;
     private final ConditionWalker walker;
@@ -158,11 +158,7 @@ public class StreamDBClient {
         SliceTable.create(ctx);
 
         // by default no cutoff
-        includeBeforeEpoch = Long.MAX_VALUE;
-    }
-
-    void setIncludeBeforeEpoch(long includeBeforeEpoch) {
-        this.includeBeforeEpoch = includeBeforeEpoch;
+        includeBeforeEpoch = config.archiveConfig.archiveIncludeBeforeEpoch;
     }
 
     public int pullToSliceTable(Date day) {

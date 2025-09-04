@@ -131,6 +131,23 @@ class StreamDBClientTest {
         return new Config(opts);
     }
 
+    private Config testConfiguration(long includeBeforeEpoch) {
+        // Init mandatory Config object with the minimum options required for testing StreamDBClient.
+        Map<String, String> opts = new HashMap<>();
+        opts.put("S3endPoint", "mock");
+        opts.put("S3identity", "mock");
+        opts.put("S3credential", "mock");
+        opts.put("DBusername", streamDBUsername);
+        opts.put("DBpassword", streamDBPassword);
+        opts.put("DBurl", mariadb.getJdbcUrl());
+        opts.put("DBstreamdbname", streamdbName);
+        opts.put("DBjournaldbname", journaldbName);
+        opts.put("queryXML", "<index value=\"example\" operation=\"EQUALS\"/>");
+        opts.put("archive.enabled", "true");
+        opts.put("archive.includeBeforeEpoch", String.valueOf(includeBeforeEpoch));
+        return new Config(opts);
+    }
+
     /**
      * Testing situation where epoch_hour is used as a source for logtime field and epoch_archived for logdate field.
      */
@@ -165,7 +182,6 @@ class StreamDBClientTest {
         // Assert StreamDBClient methods work as expected with the test data.
         final Config config = testConfiguration();
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
-        sdc.setIncludeBeforeEpoch(Long.MAX_VALUE);
         Long earliestEpoch = 1696377600L; // 2023-10-04
         Long latestOffset = earliestEpoch;
 
@@ -221,7 +237,6 @@ class StreamDBClientTest {
         // Assert StreamDBClient methods work as expected with the test data.
         final Config config = testConfiguration();
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
-        sdc.setIncludeBeforeEpoch(Long.MAX_VALUE);
         Long earliestEpoch = 1696377600L; // 2023-10-04
         Long latestOffset = earliestEpoch;
 
@@ -283,7 +298,6 @@ class StreamDBClientTest {
         // Assert StreamDBClient methods work as expected with the test data.
         final Config config = testConfiguration();
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
-        sdc.setIncludeBeforeEpoch(Long.MAX_VALUE);
         Long earliestEpoch = 1696377600L; // 2023-10-04
         Long latestOffset = earliestEpoch;
 
@@ -351,7 +365,7 @@ class StreamDBClientTest {
     }
 
     /**
-     * Testing setIncludeBeforeEpoch() method functionality.
+     * Testing IncludeBeforeEpoch functionality.
      */
     @Test
     public void setIncludeBeforeEpochTest() {
@@ -382,18 +396,15 @@ class StreamDBClientTest {
         ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();
 
         // Assert StreamDBClient methods work as expected with the test data.
-        final Config config = testConfiguration();
+
+        // Set includeBeforeEpoch in ArchiveConfig to 1696471200L for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-05 02:00 UTC or newer.
+        final Config config = testConfiguration(1696471200L);
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
 
         // Pull the records from a specific logdate to the slicetable for further processing.
         int rows = sdc.pullToSliceTable(Date.valueOf("2023-10-5"));
         Assertions.assertEquals(1, rows);
 
-        // Try to get the next hour from the slicetable using the default includeBeforeEpoch value, result should not be a stub.
-        Assertions.assertFalse(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
-
-        // Use setIncludeBeforeEpoch() to set the query condition for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-05 02:00 UTC or newer.
-        sdc.setIncludeBeforeEpoch(1696471200L);
         // Try to get the next hour from the slicetable, result should be a stub.
         Assertions.assertTrue(sdc.getNextHourAndSizeFromSliceTable(1696377600L).isStub);
     }
@@ -401,7 +412,6 @@ class StreamDBClientTest {
     @Test
     public void equalsHashCodeContractTest() {
         EqualsVerifier
-                .simple()
                 .forClass(StreamDBClient.class)
                 .withNonnullFields("ctx", "includeBeforeEpoch", "bloomEnabled", "journaldbCondition", "walker")
                 .withIgnoredFields("LOGGER")
