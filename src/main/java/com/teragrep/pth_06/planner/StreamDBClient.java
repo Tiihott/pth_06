@@ -405,12 +405,12 @@ public class StreamDBClient {
         }
         StreamDBClient cast = (StreamDBClient) object;
         return includeBeforeEpoch == cast.includeBeforeEpoch && bloomEnabled == cast.bloomEnabled && Objects
-                .equals(LOGGER, cast.LOGGER) && Objects.equals(ctx, cast.ctx)
-                && Objects.equals(journaldbCondition, cast.journaldbCondition) && Objects.equals(walker, cast.walker);
+                .equals(ctx, cast.ctx) && Objects.equals(journaldbCondition, cast.journaldbCondition)
+                && Objects.equals(walker, cast.walker);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(LOGGER, ctx, includeBeforeEpoch, bloomEnabled, journaldbCondition, walker);
+        return Objects.hash(ctx, includeBeforeEpoch, bloomEnabled, journaldbCondition, walker);
     }
 }

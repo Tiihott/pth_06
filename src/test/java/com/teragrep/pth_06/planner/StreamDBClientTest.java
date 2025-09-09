@@ -400,6 +400,11 @@ class StreamDBClientTest {
 
     @Test
     public void equalsHashCodeContractTest() {
-        EqualsVerifier.simple().forClass(StreamDBClient.class).verify();
+        EqualsVerifier
+                .simple()
+                .forClass(StreamDBClient.class)
+                .withNonnullFields("ctx", "includeBeforeEpoch", "bloomEnabled", "journaldbCondition", "walker")
+                .withIgnoredFields("LOGGER")
+                .verify();
     }
 }
