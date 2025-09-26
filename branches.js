@@ -1,1 +1,1 @@
-var branches = ["main", "streamDBClient_tests_refactor"]
+var branches = ["streamDBClient_tests_refactor", "main"]
