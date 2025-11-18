@@ -12,18 +12,18 @@
 <g id="Node000000" class="node">
 <title>Node0</title>
 <g id="a_Node000000"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="92,-312.5 30,-312.5 30,-293.5 92,-293.5 92,-312.5"/>
-<text text-anchor="middle" x="61" y="-300.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record19</text>
+<polygon fill="#e0e0e0" stroke="#999999" points="89,-264.5 33,-264.5 33,-245.5 89,-245.5 89,-264.5"/>
+<text text-anchor="middle" x="61" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record2</text>
 </a>
 </g>
 </g>
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1LogfileRecord.html" target="_top" xlink:title="Contains information for log files that have been run through Log Archiver.">
+<g id="a_Node000001"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1BucketRecord.html" target="_top" xlink:title="Buckets in object storage.">
 <polygon fill="white" stroke="#666666" points="476.5,-318 158.5,-318 158.5,-288 476.5,-288 476.5,-318"/>
 <text text-anchor="start" x="166.5" y="-306" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.journaldb.tables.records.</text>
-<text text-anchor="middle" x="317.5" y="-295" font-family="Helvetica,sans-Serif" font-size="10.00">LogfileRecord</text>
+<text text-anchor="middle" x="317.5" y="-295" font-family="Helvetica,sans-Serif" font-size="10.00">BucketRecord</text>
 </a>
 </g>
 </g>
@@ -31,100 +31,100 @@
 <g id="edge75_Node000000_Node000001" class="edge">
 <title>Node0&#45;&gt;Node1</title>
 <g id="a_edge75_Node000000_Node000001"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M102.61,-303C118.49,-303 137.8,-303 158.24,-303"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="102.19,-299.5 92.19,-303 102.19,-306.5 102.19,-299.5"/>
-</a>
-</g>
-</g>
-<!-- Node6 -->
-<g id="Node000006" class="node">
-<title>Node6</title>
-<g id="a_Node000006"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="89,-216.5 33,-216.5 33,-197.5 89,-197.5 89,-216.5"/>
-<text text-anchor="middle" x="61" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record2</text>
+<path fill="none" stroke="#63b8ff" d="M99.11,-265.15C116.84,-269.77 138.43,-275.08 158,-279 174.1,-282.22 191.2,-285.24 207.98,-287.96"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="99.72,-261.69 89.16,-262.52 97.93,-268.46 99.72,-261.69"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1BucketRecord.html" target="_top" xlink:title="Buckets in object storage.">
+<g id="a_Node000005"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1HostRecord.html" target="_top" xlink:title="Host names.">
 <polygon fill="white" stroke="#666666" points="476.5,-270 158.5,-270 158.5,-240 476.5,-240 476.5,-270"/>
 <text text-anchor="start" x="166.5" y="-258" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.journaldb.tables.records.</text>
-<text text-anchor="middle" x="317.5" y="-247" font-family="Helvetica,sans-Serif" font-size="10.00">BucketRecord</text>
+<text text-anchor="middle" x="317.5" y="-247" font-family="Helvetica,sans-Serif" font-size="10.00">HostRecord</text>
 </a>
 </g>
 </g>
-<!-- Node6&#45;&gt;Node5 -->
-<g id="edge76_Node000006_Node000005" class="edge">
-<title>Node6&#45;&gt;Node5</title>
-<g id="a_edge76_Node000006_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M99.11,-217.15C116.84,-221.77 138.43,-227.08 158,-231 174.1,-234.22 191.2,-237.24 207.98,-239.96"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="99.72,-213.69 89.16,-214.52 97.93,-220.46 99.72,-213.69"/>
-</a>
-</g>
-</g>
-<!-- Node7 -->
-<g id="Node000007" class="node">
-<title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1HostRecord.html" target="_top" xlink:title="Host names.">
-<polygon fill="white" stroke="#666666" points="476.5,-222 158.5,-222 158.5,-192 476.5,-192 476.5,-222"/>
-<text text-anchor="start" x="166.5" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.journaldb.tables.records.</text>
-<text text-anchor="middle" x="317.5" y="-199" font-family="Helvetica,sans-Serif" font-size="10.00">HostRecord</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node7 -->
-<g id="edge77_Node000006_Node000007" class="edge">
-<title>Node6&#45;&gt;Node7</title>
-<g id="a_edge77_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M99.46,-207C115.96,-207 136.58,-207 158.48,-207"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="99.24,-203.5 89.24,-207 99.24,-210.5 99.24,-203.5"/>
-</a>
-</g>
-</g>
-<!-- Node8 -->
-<g id="Node000008" class="node">
-<title>Node8</title>
-<g id="a_Node000008"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1streamdb_1_1tables_1_1records_1_1LogGroupRecord.html" target="_top" xlink:title="This class is generated by jOOQ.">
-<polygon fill="white" stroke="#666666" points="477,-174 158,-174 158,-144 477,-144 477,-174"/>
-<text text-anchor="start" x="166" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.streamdb.tables.records.</text>
-<text text-anchor="middle" x="317.5" y="-151" font-family="Helvetica,sans-Serif" font-size="10.00">LogGroupRecord</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node8 -->
-<g id="edge78_Node000006_Node000008" class="edge">
-<title>Node6&#45;&gt;Node8</title>
-<g id="a_edge78_Node000006_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M99.11,-196.85C116.84,-192.23 138.43,-186.92 158,-183 174.1,-179.78 191.2,-176.76 207.98,-174.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="97.93,-193.54 89.16,-199.48 99.72,-200.31 97.93,-193.54"/>
+<!-- Node0&#45;&gt;Node5 -->
+<g id="edge76_Node000000_Node000005" class="edge">
+<title>Node0&#45;&gt;Node5</title>
+<g id="a_edge76_Node000000_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M99.46,-255C115.96,-255 136.58,-255 158.48,-255"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="99.24,-251.5 89.24,-255 99.24,-258.5 99.24,-251.5"/>
 </a>
 </g>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="89,-120.5 33,-120.5 33,-101.5 89,-101.5 89,-120.5"/>
-<text text-anchor="middle" x="61" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record3</text>
+<g id="a_Node000010"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1streamdb_1_1tables_1_1records_1_1LogGroupRecord.html" target="_top" xlink:title="This class is generated by jOOQ.">
+<polygon fill="white" stroke="#666666" points="477,-222 158,-222 158,-192 477,-192 477,-222"/>
+<text text-anchor="start" x="166" y="-210" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.streamdb.tables.records.</text>
+<text text-anchor="middle" x="317.5" y="-199" font-family="Helvetica,sans-Serif" font-size="10.00">LogGroupRecord</text>
+</a>
+</g>
+</g>
+<!-- Node0&#45;&gt;Node10 -->
+<g id="edge77_Node000000_Node000010" class="edge">
+<title>Node0&#45;&gt;Node10</title>
+<g id="a_edge77_Node000000_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M99.11,-244.85C116.84,-240.23 138.43,-234.92 158,-231 174.1,-227.78 191.2,-224.76 207.98,-222.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="97.93,-241.54 89.16,-247.48 99.72,-248.31 97.93,-241.54"/>
+</a>
+</g>
+</g>
+<!-- Node7 -->
+<g id="Node000007" class="node">
+<title>Node7</title>
+<g id="a_Node000007"><a xlink:title=" ">
+<polygon fill="#e0e0e0" stroke="#999999" points="92,-163.5 30,-163.5 30,-144.5 92,-144.5 92,-163.5"/>
+<text text-anchor="middle" x="61" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record20</text>
+</a>
+</g>
+</g>
+<!-- Node6 -->
+<g id="Node000006" class="node">
+<title>Node6</title>
+<g id="a_Node000006"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1journaldb_1_1tables_1_1records_1_1LogfileRecord.html" target="_top" xlink:title="Contains information for log files that have been run through Log Archiver.">
+<polygon fill="white" stroke="#666666" points="476.5,-174 158.5,-174 158.5,-144 476.5,-144 476.5,-174"/>
+<text text-anchor="start" x="166.5" y="-162" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.journaldb.tables.records.</text>
+<text text-anchor="middle" x="317.5" y="-151" font-family="Helvetica,sans-Serif" font-size="10.00">LogfileRecord</text>
+</a>
+</g>
+</g>
+<!-- Node7&#45;&gt;Node6 -->
+<g id="edge78_Node000007_Node000006" class="edge">
+<title>Node7&#45;&gt;Node6</title>
+<g id="a_edge78_Node000007_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M102.61,-154.8C118.49,-155.11 137.8,-155.49 158.24,-155.89"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="102.26,-151.29 92.19,-154.59 102.12,-158.29 102.26,-151.29"/>
 </a>
 </g>
 </g>
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1streamdb_1_1tables_1_1records_1_1HostRecord.html" target="_top" xlink:title="This class is generated by jOOQ.">
+<g id="a_Node000009"><a xlink:title=" ">
+<polygon fill="#e0e0e0" stroke="#999999" points="89,-120.5 33,-120.5 33,-101.5 89,-101.5 89,-120.5"/>
+<text text-anchor="middle" x="61" y="-108.5" font-family="Helvetica,sans-Serif" font-size="10.00">Record3</text>
+</a>
+</g>
+</g>
+<!-- Node8 -->
+<g id="Node000008" class="node">
+<title>Node8</title>
+<g id="a_Node000008"><a xlink:href="classcom_1_1teragrep_1_1pth__06_1_1jooq_1_1generated_1_1streamdb_1_1tables_1_1records_1_1HostRecord.html" target="_top" xlink:title="This class is generated by jOOQ.">
 <polygon fill="white" stroke="#666666" points="477,-126 158,-126 158,-96 477,-96 477,-126"/>
 <text text-anchor="start" x="166" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00">com.teragrep.pth_06.jooq.generated.streamdb.tables.records.</text>
 <text text-anchor="middle" x="317.5" y="-103" font-family="Helvetica,sans-Serif" font-size="10.00">HostRecord</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node9 -->
-<g id="edge79_Node000010_Node000009" class="edge">
-<title>Node10&#45;&gt;Node9</title>
-<g id="a_edge79_Node000010_Node000009"><a xlink:title=" ">
+<!-- Node9&#45;&gt;Node8 -->
+<g id="edge79_Node000009_Node000008" class="edge">
+<title>Node9&#45;&gt;Node8</title>
+<g id="a_edge79_Node000009_Node000008"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M99.38,-111C115.75,-111 136.18,-111 157.9,-111"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="99.24,-107.5 89.24,-111 99.24,-114.5 99.24,-107.5"/>
 </a>
@@ -190,53 +190,53 @@
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="122,-168.5 0,-168.5 0,-149.5 122,-149.5 122,-168.5"/>
-<text text-anchor="middle" x="61" y="-156.5" font-family="Helvetica,sans-Serif" font-size="10.00">UpdatableRecordImpl</text>
+<polygon fill="#e0e0e0" stroke="#999999" points="122,-200.5 0,-200.5 0,-181.5 122,-181.5 122,-200.5"/>
+<text text-anchor="middle" x="61" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">UpdatableRecordImpl</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
-<g id="edge85_Node000002_Node000001" class="edge">
+<g id="edge83_Node000002_Node000001" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<g id="a_edge85_Node000002_Node000001"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M100.55,-173.07C108.39,-177.27 116.05,-182.53 122,-189 151.17,-220.7 124.24,-252.24 158,-279 162.14,-282.28 166.55,-285.21 171.14,-287.82"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="101.88,-169.82 91.36,-168.61 98.83,-176.12 101.88,-169.82"/>
+<g id="a_edge83_Node000002_Node000001"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M84.8,-206.75C96.4,-215.18 110.46,-226.07 122,-237 139.85,-253.9 136.5,-267.08 158,-279 164.09,-282.37 170.49,-285.32 177.1,-287.88"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="86.66,-203.78 76.49,-200.82 82.59,-209.47 86.66,-203.78"/>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node5 -->
-<g id="edge83_Node000002_Node000005" class="edge">
+<g id="edge84_Node000002_Node000005" class="edge">
 <title>Node2&#45;&gt;Node5</title>
-<g id="a_edge83_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M95.53,-172.83C104.56,-177.32 114.03,-182.78 122,-189 141.38,-204.13 136.5,-219.08 158,-231 164.09,-234.37 170.49,-237.32 177.1,-239.88"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="96.9,-169.61 86.36,-168.51 93.91,-175.94 96.9,-169.61"/>
+<g id="a_edge84_Node000002_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M90.17,-204.89C108.96,-213.61 134.46,-224.42 158,-231 170.2,-234.41 183.06,-237.36 195.98,-239.92"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="91.53,-201.66 80.99,-200.55 88.54,-207.99 91.53,-201.66"/>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node7 -->
-<g id="edge84_Node000002_Node000007" class="edge">
-<title>Node2&#45;&gt;Node7</title>
-<g id="a_edge84_Node000002_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M106.63,-171.09C122.75,-175.21 141.12,-179.62 158,-183 174.1,-186.22 191.2,-189.24 207.98,-191.96"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="107.49,-167.7 96.93,-168.58 105.73,-174.47 107.49,-167.7"/>
+<!-- Node2&#45;&gt;Node10 -->
+<g id="edge87_Node000002_Node000010" class="edge">
+<title>Node2&#45;&gt;Node10</title>
+<g id="a_edge87_Node000002_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M132.37,-195.42C140.48,-195.93 148.98,-196.47 157.69,-197.02"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="132.51,-191.93 122.31,-194.79 132.07,-198.91 132.51,-191.93"/>
+</a>
+</g>
+</g>
+<!-- Node2&#45;&gt;Node6 -->
+<g id="edge85_Node000002_Node000006" class="edge">
+<title>Node2&#45;&gt;Node6</title>
+<g id="a_edge85_Node000002_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M132.3,-182.16C152.42,-179.63 174.94,-176.8 197.14,-174.01"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="131.8,-178.7 122.31,-183.42 132.67,-185.64 131.8,-178.7"/>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node8 -->
-<g id="edge87_Node000002_Node000008" class="edge">
+<g id="edge86_Node000002_Node000008" class="edge">
 <title>Node2&#45;&gt;Node8</title>
-<g id="a_edge87_Node000002_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M132.37,-159C140.48,-159 148.98,-159 157.69,-159"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="132.31,-155.5 122.31,-159 132.31,-162.5 132.31,-155.5"/>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node9 -->
-<g id="edge86_Node000002_Node000009" class="edge">
-<title>Node2&#45;&gt;Node9</title>
-<g id="a_edge86_Node000002_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M106.63,-146.91C122.75,-142.79 141.12,-138.38 158,-135 174.1,-131.78 191.2,-128.76 207.98,-126.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="105.73,-143.53 96.93,-149.42 107.49,-150.3 105.73,-143.53"/>
+<g id="a_edge86_Node000002_Node000008"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M113.66,-177.48C116.55,-176.12 119.35,-174.63 122,-173 141.81,-160.8 137.38,-145.77 158,-135 164.54,-131.59 171.42,-128.62 178.51,-126.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="112.1,-174.34 104.2,-181.4 114.78,-180.81 112.1,-174.34"/>
 </a>
 </g>
 </g>
@@ -244,8 +244,8 @@
 <g id="edge82_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge82_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M96.8,-145.25C105.46,-141.02 114.43,-135.9 122,-130 141.66,-114.68 136.27,-99.21 158,-87 164.07,-83.59 170.46,-80.62 177.06,-78.03"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="95.22,-142.13 87.6,-149.49 98.14,-148.49 95.22,-142.13"/>
+<path fill="none" stroke="#63b8ff" d="M117.87,-176.3C119.31,-175.27 120.69,-174.18 122,-173 152.8,-145.28 125.32,-112.48 158,-87 162.28,-83.66 166.83,-80.69 171.58,-78.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="115.95,-173.37 109.08,-181.44 119.48,-179.42 115.95,-173.37"/>
 </a>
 </g>
 </g>
@@ -253,8 +253,8 @@
 <g id="edge88_Node000002_Node000011" class="edge">
 <title>Node2&#45;&gt;Node11</title>
 <g id="a_edge88_Node000002_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M101.95,-144.89C109.3,-140.93 116.41,-136.02 122,-130 151.6,-98.14 123.97,-66.08 158,-39 162.14,-35.71 166.53,-32.77 171.13,-30.16"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="100.09,-141.9 92.6,-149.4 103.13,-148.2 100.09,-141.9"/>
+<path fill="none" stroke="#63b8ff" d="M119.05,-175.74C120.07,-174.88 121.06,-173.97 122,-173 164.97,-128.77 112.02,-80.09 158,-39 161.74,-35.66 165.73,-32.67 169.93,-30.01"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="116.82,-173.02 110.43,-181.47 120.7,-178.85 116.82,-173.02"/>
 </a>
 </g>
 </g>
