@@ -185,14 +185,11 @@ class StreamDBClientTest {
     public void pullToSliceTableSingleTest() {
         // Add test data to logfile table in journaldb.
         final DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);
-        Instant instant = Instant.ofEpochSecond(1696471200L);
-        ZonedDateTime instantZonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);
-        ZonedDateTime instantPlusDay = instantZonedDateTime.plusDays(1);
-        // Set logdate to 2023-10-04 and set logtime-string in path to 2023100422 UTC-4, but set epoch values to null.
-        LogfileRecord logfileRecord = logfileRecordForEpoch(instantZonedDateTime.toEpochSecond(), true);
+        // Set logdate to 2023-10-05 and set logtime-string in path to 2023100502 UTC, but set epoch values to null.
+        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, false);
         ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();
-        // Set logdate to 2023-10-05 and set logtime-string in path to 2023100522 UTC-4, but set epoch values to null.
-        LogfileRecord logfileRecord2 = logfileRecordForEpoch(instantPlusDay.toEpochSecond(), true);
+        // Set logdate to 2023-10-06 and set logtime-string in path to 2023100602 UTC, but set epoch values to null.
+        LogfileRecord logfileRecord2 = logfileRecordForEpoch(1696471200L + 24L * 3600L, false);
         ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();
 
         // Assert StreamDBClient methods work as expected with the test data.
@@ -201,7 +198,7 @@ class StreamDBClientTest {
         final Config config = new Config(opts);
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
         // Only the row with logdate of "2023-10-4" should be pulled to slicetable.
-        int rows = sdc.pullToSliceTable(Date.valueOf(instantZonedDateTime.toLocalDate()));
+        int rows = sdc.pullToSliceTable(Date.valueOf("2023-10-5"));
         Assertions.assertEquals(1, rows);
     }
 
@@ -212,14 +209,14 @@ class StreamDBClientTest {
     public void pullToSliceTableMultiTest() {
         // Add test data to logfile table in journaldb.
         final DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);
-        // Set logdate to 2023-10-04 and set logtime-string in path to 2023100422 UTC-4, but set epoch values to null.
+        // Set logdate to 2023-10-04 and set logtime-string in path to 2023100502 UTC.
         Instant instant = Instant.ofEpochSecond(1696471200L);
         ZonedDateTime instantZonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);
         ZonedDateTime instantPlusHour = instantZonedDateTime.plusHours(1);
-        LogfileRecord logfileRecord = logfileRecordForEpoch(instantZonedDateTime.toEpochSecond(), true);
+        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, false);
         ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();
-        // Set logdate to 2023-10-04 and set logtime-string in path to 2023100423 UTC-4, but set epoch values to null.
-        LogfileRecord logfileRecord2 = logfileRecordForEpoch(instantPlusHour.toEpochSecond(), true);
+        // Set logdate to 2023-10-04 and set logtime-string in path to 2023100503 UTC
+        LogfileRecord logfileRecord2 = logfileRecordForEpoch(1696471200L + 3600L, false);
         ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();
 
         // Assert StreamDBClient methods work as expected with the test data.
@@ -227,8 +224,8 @@ class StreamDBClientTest {
         opts.put("DBurl", mariadb.getJdbcUrl());
         final Config config = new Config(opts);
         final StreamDBClient sdc = Assertions.assertDoesNotThrow(() -> new StreamDBClient(config));
-        // Both of the rows in the database for logdate of "2023-10-4" should be pulled to the slicetable.
-        int rows = sdc.pullToSliceTable(Date.valueOf(instantZonedDateTime.toLocalDate()));
+        // Both of the rows in the database for logdate of "2023-10-5" should be pulled to the slicetable.
+        int rows = sdc.pullToSliceTable(Date.valueOf("2023-10-5"));
         Assertions.assertEquals(2, rows);
     }
 
