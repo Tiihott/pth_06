@@ -138,6 +138,7 @@ CREATE TABLE `logfile` (
 ) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Contains information for log files that have been run through Log Archiver';
 INSERT INTO host (id, name) VALUES (1, 'testHost1');
 INSERT INTO bucket (id, name) VALUES (1, 'bucket1');
+INSERT INTO bucket (id, name) VALUES (2, 'bucket2');
 INSERT INTO category (id, name) VALUES (1, 'testCategory');
 INSERT INTO source_system (id, name) VALUES (2, 'testSourceSystem2');
 flush privileges;
