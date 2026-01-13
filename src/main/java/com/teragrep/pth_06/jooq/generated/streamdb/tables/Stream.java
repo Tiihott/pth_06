@@ -65,7 +65,7 @@ import org.jooq.Identity;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row5;
+import org.jooq.Row6;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -73,6 +73,7 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
 import org.jooq.types.UInteger;
+import org.jooq.types.ULong;
 
 
 /**
@@ -88,7 +89,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Stream extends TableImpl<StreamRecord> {
 
-    private static final long serialVersionUID = 1623008963;
+    private static final long serialVersionUID = -410031162;
 
     /**
      * The reference instance of <code>streamdb.stream</code>
@@ -127,6 +128,11 @@ public class Stream extends TableImpl<StreamRecord> {
      * The column <code>streamdb.stream.tag</code>.
      */
     public final TableField<StreamRecord, String> TAG = createField(DSL.name("tag"), org.jooq.impl.SQLDataType.VARCHAR(48).nullable(false), this, "");
+
+    /**
+     * The column <code>streamdb.stream.logtag_id</code>.
+     */
+    public final TableField<StreamRecord, ULong> LOGTAG_ID = createField(DSL.name("logtag_id"), org.jooq.impl.SQLDataType.BIGINTUNSIGNED.nullable(false), this, "");
 
     /**
      * Create a <code>streamdb.stream</code> table reference
@@ -222,11 +228,11 @@ public class Stream extends TableImpl<StreamRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row5 type methods
+    // Row6 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<UInteger, UInteger, String, String, String> fieldsRow() {
-        return (Row5) super.fieldsRow();
+    public Row6<UInteger, UInteger, String, String, String, ULong> fieldsRow() {
+        return (Row6) super.fieldsRow();
     }
 }

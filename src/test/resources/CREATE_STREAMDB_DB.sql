@@ -69,12 +69,13 @@ CREATE TABLE `stream` (
                           `directory` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                           `stream` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                           `tag` varchar(48) COLLATE utf8mb4_unicode_ci NOT NULL,
+                          `logtag_id` BIGINT UNSIGNED NOT NULL,
                           PRIMARY KEY (`id`),
                           KEY `gid` (`gid`),
                           CONSTRAINT `stream_ibfk_1` FOREIGN KEY (`gid`) REFERENCES `log_group` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 INSERT INTO log_group (id, name) VALUES (1, 'testGroup1');
-INSERT INTO stream (id, gid, directory, stream, tag) VALUES (1, 1, 'example', 'log:example:0', 'example');
+INSERT INTO stream (id, gid, directory, stream, tag, logtag_id) VALUES (1, 1, 'example', 'log:example:0', 'example', 1);
 INSERT INTO host (id, name, gid) VALUES (1, 'testHost1', 1);
 USE journaldb;
 CREATE TABLE `source_system` (
