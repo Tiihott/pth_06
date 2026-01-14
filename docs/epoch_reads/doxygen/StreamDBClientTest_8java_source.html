@@ -275,7 +275,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -299,7 +299,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -317,7 +317,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -353,7 +353,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -394,7 +394,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -421,7 +421,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -453,7 +453,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(plusOneDayRecord).execute();</div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
@@ -496,7 +496,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(plusOneDayRecord).execute();</div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
 <div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
 <div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
@@ -530,7 +530,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
 <div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -557,7 +557,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span> </div>
 <div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
@@ -590,7 +590,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
 <div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span> </div>
 <div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>        <span class="comment">// Set includeBeforeEpoch in ArchiveConfig to an epoch that represents 2023-10-05 03:00 UTC, for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-05 03:00 UTC or newer.</span></div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>        opts.put(<span class="stringliteral">&quot;archive.includeBeforeEpoch&quot;</span>, String.valueOf(instantPlusHour.getEpochSecond()));</div>
 <div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
@@ -627,7 +627,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
 <div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span> </div>
 <div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>        <span class="comment">// Set includeBeforeEpoch in ArchiveConfig to an epoch that represents 2023-10-04 23:00 UTC-4, for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-04 23:00 UTC-4 or newer.</span></div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>        opts.put(<span class="stringliteral">&quot;archive.includeBeforeEpoch&quot;</span>, String.valueOf(instantPlusHour.toEpochSecond()));</div>
 <div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
@@ -656,7 +656,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span> </div>
 <div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>        <span class="comment">// Create an instance of StreamDBClient using the default server timezone (UTC-4).</span></div>
-<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = <span class="keyword">new</span> HashMap&lt;&gt;(this.opts);</div>
 <div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
 <div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
