@@ -562,62 +562,37 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>        Assertions.assertEquals(0, rows);</div>
 <div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>    }</div>
 <div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span> </div>
-<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    <span class="comment">// Logfile that has its ID present in corrupted_archive table should not be included in the StreamDBClient query results.</span></div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    @Test</div>
-<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> corruptedArchiveTest() {</div>
-<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
-<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100422 UTC-4, but set epoch values to null.</span></div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
-<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        ZonedDateTime instantZonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);</div>
-<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>        LogfileRecord corruptedLogfileRecord = logfileRecordForEpoch(instantZonedDateTime.toEpochSecond(), <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(corruptedLogfileRecord).execute();</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>        <span class="comment">// Add the ID of the inserted logfile to corrupted_archive table</span></div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>        CorruptedArchiveRecord corruptedArchiveRecord = <span class="keyword">new</span> CorruptedArchiveRecord(corruptedLogfileRecord.getId());</div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>        ctx.insertInto(JOURNALDB.CORRUPTED_ARCHIVE).set(corruptedArchiveRecord).execute();</div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        <span class="comment">// Add a second logfile for the same date but don&#39;t add it to corrupted_archive table</span></div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        Instant instantPlusHour = instant.plusSeconds(3600);</div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>        ZonedDateTime instantPlusHourZonedDateTime = ZonedDateTime.ofInstant(instantPlusHour, zoneId);</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>        LogfileRecord uncorruptedLogfileRecord = logfileRecordForEpoch(</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>                instantPlusHourZonedDateTime.toEpochSecond(), <span class="keyword">true</span></div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>        );</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(uncorruptedLogfileRecord).execute();</div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span> </div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        <span class="comment">// Assert StreamDBClient methods work as expected with the test data.</span></div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="comment">// Set queryXML to search for logfiles with logtag of example, which is used for new normalized logtag in the inserted logfiles.</span></div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>        opts.put(<span class="stringliteral">&quot;queryXML&quot;</span>, <span class="stringliteral">&quot;&lt;index value=\&quot;example\&quot; operation=\&quot;EQUALS\&quot;/&gt;&quot;</span>);</div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>        Instant instantEarliest = Instant.ofEpochSecond(1696392000L);</div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>        ZonedDateTime instantEarliestZonedDateTime = ZonedDateTime.ofInstant(instantEarliest, zoneId);</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>        <span class="keyword">final</span> <span class="keywordtype">long</span> earliestEpoch = instantEarliestZonedDateTime.toEpochSecond(); <span class="comment">// 2023-10-04 00:00 UTC-4</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span> </div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>        <span class="comment">// Pull the records from a specific logdate to the slicetable for further processing.</span></div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>        <span class="keywordtype">int</span> rows = sdc.pullToSliceTable(Date.valueOf(instantEarliestZonedDateTime.toLocalDate()));</div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>        <span class="comment">// Assert that the record with ID present in corrupted_archive table is not included in the query result</span></div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>        Assertions.assertEquals(1, rows);</div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>        <span class="comment">// Get the offset for the first non-empty hour of records from the slicetable.</span></div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>        WeightedOffset nextHourAndSizeFromSliceTable = sdc.getNextHourAndSizeFromSliceTable(0L);</div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>        Assertions.assertFalse(nextHourAndSizeFromSliceTable.isStub);</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>        <span class="keyword">final</span> <span class="keywordtype">long</span> latestOffset = nextHourAndSizeFromSliceTable.offset();</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>        <span class="comment">// Get the record from slicetable and assert that it was found with the queryXML condition.</span></div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>        Result&lt;Record10&lt;ULong, String, String, String, Date, String, String, Long, ULong, ULong&gt;&gt; hourRange = sdc</div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>                .getHourRange(earliestEpoch, latestOffset);</div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>        Assertions.assertEquals(1, hourRange.size());</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>        Assertions.assertEquals(uncorruptedLogfileRecord.getId(), hourRange.get(0).get(0));</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span> </div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>    }</div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span> </div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>    @Test</div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> equalsHashCodeContractTest() {</div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>        EqualsVerifier</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>                .forClass(StreamDBClient.class)</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>                .withIgnoredFields(<span class="stringliteral">&quot;nestedTopNQuery&quot;</span>)</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>                .withPrefabValues(NestedTopNQuery.class, <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>), <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>)).verify();</div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>    }</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>}</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    @Test</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> pullToSliceTableSkipsCorruptedLogfilesTest() {</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        ZonedDateTime zdt = ZonedDateTime.of(2023, 10, 4, 22, 0, 0, 0, zoneId);</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        LogfileRecord corruptedLogfileRecord = logfileRecordForEpoch(zdt.toEpochSecond(), <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(corruptedLogfileRecord).execute();</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        <span class="comment">// Add the ID of the inserted logfile to corrupted_archive table</span></div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>        CorruptedArchiveRecord corruptedArchiveRecord = <span class="keyword">new</span> CorruptedArchiveRecord(corruptedLogfileRecord.getId());</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        <span class="keywordtype">int</span> insertedRows = ctx.insertInto(JOURNALDB.CORRUPTED_ARCHIVE).set(corruptedArchiveRecord).execute();</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>        Assertions.assertEquals(1, insertedRows);</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        <span class="keyword">final</span> StreamDBClient sdc = Assertions.assertDoesNotThrow(() -&gt; <span class="keyword">new</span> StreamDBClient(config));</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>        <span class="comment">// Pull the records from a specific logdate to the slicetable for further processing.</span></div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>        <span class="keywordtype">int</span> rows = sdc.pullToSliceTable(Date.valueOf(zdt.toLocalDate()));</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>        <span class="comment">// Assert that the record with ID present in corrupted_archive table is not included in the query result</span></div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>        Assertions.assertEquals(0, rows);</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>        WeightedOffset nextHourAndSizeFromSliceTable = sdc.getNextHourAndSizeFromSliceTable(0L);</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>        Assertions.assertTrue(nextHourAndSizeFromSliceTable.isStub);</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    }</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span> </div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    @Test</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> equalsHashCodeContractTest() {</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>        EqualsVerifier</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>                .forClass(StreamDBClient.class)</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>                .withIgnoredFields(<span class="stringliteral">&quot;nestedTopNQuery&quot;</span>)</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>                .withPrefabValues(NestedTopNQuery.class, <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>), <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>)).verify();</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>    }</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
