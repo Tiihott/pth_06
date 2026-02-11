@@ -404,7 +404,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  204</span>                                          {</div>
 <div class="line"><span class="lineno">  205</span>        <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#a2fba1d96944c63a86dc11bdc69372d46">LOGGER</a>.<a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#a432bade7d6310bed1e1b9a405fb53d56">debug</a>(<span class="stringliteral">&quot;StreamDBClient.pullToSliceTable called for date &lt;{}&gt;&quot;</span>, day);</div>
 <div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>        SelectConditionStep&lt;Record1&lt;ULong&gt;&gt; corruptedLogfilesField = select(JOURNALDB.CORRUPTED_ARCHIVE.LOGFILE_ID)</div>
+<div class="line"><span class="lineno">  207</span>        SelectConditionStep&lt;Record1&lt;Integer&gt;&gt; corruptedLogfilesField = selectOne()</div>
 <div class="line"><span class="lineno">  208</span>                .from(JOURNALDB.CORRUPTED_ARCHIVE)</div>
 <div class="line"><span class="lineno">  209</span>                .where(JOURNALDB.LOGFILE.ID.eq(JOURNALDB.CORRUPTED_ARCHIVE.LOGFILE_ID));</div>
 <div class="line"><span class="lineno">  210</span>        SelectOnConditionStep&lt;Record10&lt;ULong, String, String, String, Date, String, String, Long, ULong, ULong&gt;&gt; select = <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#a3386373482cb1885a93ed7bed49432b8">ctx</a></div>

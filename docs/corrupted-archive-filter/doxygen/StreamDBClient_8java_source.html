@@ -156,7 +156,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">import</span> <span class="keyword">static</span> com.teragrep.pth_06.jooq.generated.journaldb.Journaldb.JOURNALDB;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">import</span> <span class="keyword">static</span> org.jooq.impl.DSL.select;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">import</span> <span class="keyword">static</span> org.jooq.impl.DSL.selectOne;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">// https://stackoverflow.com/questions/33657391/qualifying-a-temporary-table-column-name-in-jooq</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">// https://www.jooq.org/doc/latest/manual/sql-building/dynamic-sql/</span></div>
@@ -280,7 +280,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#adbe4b13c48e67d8d82ae4ed9ee93f7df">  204</a></span>    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#adbe4b13c48e67d8d82ae4ed9ee93f7df">pullToSliceTable</a>(Date day) {</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#a2fba1d96944c63a86dc11bdc69372d46">LOGGER</a>.<a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#a432bade7d6310bed1e1b9a405fb53d56">debug</a>(<span class="stringliteral">&quot;StreamDBClient.pullToSliceTable called for date &lt;{}&gt;&quot;</span>, day);</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        SelectConditionStep&lt;Record1&lt;ULong&gt;&gt; corruptedLogfilesField = select(JOURNALDB.CORRUPTED_ARCHIVE.LOGFILE_ID)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        SelectConditionStep&lt;Record1&lt;Integer&gt;&gt; corruptedLogfilesField = selectOne()</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                .from(JOURNALDB.CORRUPTED_ARCHIVE)</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                .where(JOURNALDB.LOGFILE.ID.eq(JOURNALDB.CORRUPTED_ARCHIVE.LOGFILE_ID));</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        SelectOnConditionStep&lt;Record10&lt;ULong, String, String, String, Date, String, String, Long, ULong, ULong&gt;&gt; select = <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1StreamDBClient.html#a3386373482cb1885a93ed7bed49432b8">ctx</a></div>
