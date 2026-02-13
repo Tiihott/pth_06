@@ -60,14 +60,8 @@ jobs:
     - name: Inject licenses to generated files
       run: bash add_headers_to_generated.sh
 
-    - name: enable podman step 1
+    - name: enable podman
       run: systemctl --user start podman.socket
-
-    - name: enable podman step 2
-      run: export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
-
-    - name: enable podman step 3
-      run: export TESTCONTAINERS_RYUK_DISABLED=true
 
     - name: Run CI
       run: mvn -Pbuild-nogenerate --batch-mode clean verify
