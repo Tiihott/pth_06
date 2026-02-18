@@ -1,0 +1,21 @@
+<map id="com.teragrep.pth_06.planner.RecordableMockDBRow.asRecord" name="com.teragrep.pth_06.planner.RecordableMockDBRow.asRecord">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,261,245,301"/>
+<area shape="rect" id="Node000002" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#ad44471477954593511cbdb304a0ded76" title=" " alt="" coords="312,5,525,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,260,156,217,190,161,236,104,263,78,292,55,302,49,305,54,295,60,266,82,240,108,194,165,160,220,138,263"/>
+<area shape="rect" id="Node000003" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#a72b0def5bf253cb3babc246462187ead" title=" " alt="" coords="312,69,525,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,259,201,190,244,152,292,119,306,112,308,117,295,124,247,156,205,194,144,263"/>
+<area shape="rect" id="Node000004" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#a74ca25ad9ccc26eca93b3a20d359bd4a" title=" " alt="" coords="312,133,525,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,259,217,221,292,183,314,175,315,180,294,188,219,225,158,263"/>
+<area shape="rect" id="Node000005" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#aa8ad21bb5a8f9b0594938f79c167ea8a" title=" " alt="" coords="312,197,525,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="217,259,313,238,314,243,218,264"/>
+<area shape="rect" id="Node000006" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#a0774864816bfa4ed24d7037daa10b3b2" title=" " alt="" coords="312,261,525,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="246,279,298,279,298,284,246,284"/>
+<area shape="rect" id="Node000007" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#abbdec5d031093faa980c5b0e86dbaa7e" title=" " alt="" coords="312,325,525,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="218,299,314,320,313,325,217,304"/>
+<area shape="rect" id="Node000008" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#ab614cd7a7083bbae02e6cb864d5aea64" title=" " alt="" coords="312,389,525,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="158,299,219,337,294,375,315,383,314,388,292,380,217,342,155,304"/>
+<area shape="rect" id="Node000009" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#a092b8e42025da6f3c6ad5ea92a1a273f" title=" " alt="" coords="312,453,525,493"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="144,300,205,369,247,407,295,439,308,446,306,450,292,444,244,411,201,372,140,303"/>
+<area shape="rect" id="Node000010" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1MockDBRow.html#a530a3c1472c332aacad872702a077e48" title=" " alt="" coords="293,517,544,557"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="138,300,160,343,194,398,240,455,266,481,295,503,305,509,302,514,292,508,263,485,236,459,190,401,156,346,133,303"/>
+</map>
