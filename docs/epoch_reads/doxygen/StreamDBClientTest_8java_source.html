@@ -272,10 +272,10 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> pullToSliceTableSingleTest() {</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="comment">// Set logdate to 2023-10-05 and set logtime-string in path to 2023100502 UTC, but set epoch values to null.</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="comment">// Set logdate to 2023-10-06 and set logtime-string in path to 2023100602 UTC, but set epoch values to null.</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="comment">// Set logdate and logtime to 2023-10-05:22 UTC-4 and set epoch_hour in path to 2023-10-06:02 UTC.</span></div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        LogfileRecord logfileRecord2 = logfileRecordForEpoch(1696471200L + 24L * 3600L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
@@ -285,7 +285,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        Assertions.assertDoesNotThrow(() -&gt; {</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            <span class="keywordflow">try</span> (<span class="keyword">final</span> StreamDBClient sdc = <span class="keyword">new</span> StreamDBClient(config)) {</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                <span class="comment">// Only the row with logdate of &quot;2023-10-4&quot; should be pulled to slicetable.</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                <span class="comment">// Only the row with epoch_hour referring to 2023-10-5 should be pulled to slicetable.</span></div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                <span class="keywordtype">int</span> rows = sdc.pullToSliceTable(Date.valueOf(<span class="stringliteral">&quot;2023-10-5&quot;</span>));</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                Assertions.assertEquals(1, rows);</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            }</div>
@@ -296,10 +296,10 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> pullToSliceTableMultiTest() {</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100502 UTC.</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100503 UTC</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:23 UTC-4 and set epoch_hour in path to 2023-10-05:03 UTC.</span></div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        LogfileRecord logfileRecord2 = logfileRecordForEpoch(1696471200L + 3600L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
@@ -309,7 +309,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        Assertions.assertDoesNotThrow(() -&gt; {</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <span class="keywordflow">try</span> (<span class="keyword">final</span> StreamDBClient sdc = <span class="keyword">new</span> StreamDBClient(config)) {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                <span class="comment">// Both of the rows in the database for logdate of &quot;2023-10-5&quot; should be pulled to the slicetable.</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                <span class="comment">// Both of the rows in the database with epoch_hour referring to &quot;2023-10-5&quot; should be pulled to the slicetable.</span></div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                <span class="keywordtype">int</span> rows = sdc.pullToSliceTable(Date.valueOf(<span class="stringliteral">&quot;2023-10-5&quot;</span>));</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                Assertions.assertEquals(2, rows);</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            }</div>
@@ -320,7 +320,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> pullToSliceTableInvalidIndexTest() {</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100502 UTC.</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
@@ -342,7 +342,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> epochHourTest() {</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="comment">// Set logdate and logtime to 2023-10-04 instead of the correct 2023-10-05 which epoch_hour is at, to test if epoch_hour takes priority or not.</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696471200L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
@@ -419,11 +419,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> getNextHourAndSizeFromSliceTableEpochTest() {</div>
 <div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100422 UTC.</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:18 UTC-4 and set epoch_hour in path to 2023-10-04:22 UTC.</span></div>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        Instant instant = Instant.ofEpochSecond(1696456800L);</div>
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696456800L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="comment">// Set logdate to 2023-10-04 and set logtime-string in path to 2023100423 UTC.</span></div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:19 UTC-4 and set epoch_hour in path to 2023-10-04:23 UTC.</span></div>
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        LogfileRecord logfileRecord2 = logfileRecordForEpoch(1696456800L + 3600L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
@@ -689,7 +689,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span> </div>
 <div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-05 02:00 UTC.</span></div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>        Instant instant = Instant.ofEpochSecond(1696471200);</div>
 <div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>        Instant instantPlusHour = instant.plusSeconds(3600);</div>
 <div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(instant.getEpochSecond(), <span class="keyword">false</span>);</div>
@@ -725,7 +725,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
 <div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-04 22:00 UTC-4.</span></div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
 <div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>        ZonedDateTime instantZonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);</div>
 <div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>        ZonedDateTime instantPlusHour = instantZonedDateTime.plusHours(1);</div>
@@ -763,7 +763,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> logtagIdTest() {</div>
 <div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-05 02:00 UTC.</span></div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
 <div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(instant.getEpochSecond(), <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
@@ -800,7 +800,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> logtagTest() {</div>
 <div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-05 02:00 UTC.</span></div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
 <div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(instant.getEpochSecond(), <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
@@ -825,7 +825,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> pullToSliceTableSkipsCorruptedLogfilesTest() {</div>
 <div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-05 02:00 UTC.</span></div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:22 UTC-4 and set epoch_hour in path to 2023-10-05:02 UTC.</span></div>
 <div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
 <div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>        LogfileRecord corruptedLogfileRecord = logfileRecordForEpoch(instant.getEpochSecond(), <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(corruptedLogfileRecord).execute();</div>
@@ -849,7 +849,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> epochHourTimezoneTest() {</div>
 <div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
 <div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
-<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>        <span class="comment">// Create a LogfileRecord object with epoch_hour of 2023-10-05 01:00 UTC.</span></div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>        <span class="comment">// Set logdate and logtime to 2023-10-04:21 UTC-4 and set epoch_hour in path to 2023-10-05:01 UTC.</span></div>
 <div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(1696467600L, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>        <span class="comment">// Insert the logfileRecord to the database using JOOQ.</span></div>
 <div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
