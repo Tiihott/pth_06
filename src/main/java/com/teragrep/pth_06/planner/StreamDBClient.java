@@ -48,6 +48,7 @@ package com.teragrep.pth_06.planner;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
+import java.time.Instant;
 import java.util.Objects;
 
 import com.codahale.metrics.MetricRegistry;
@@ -200,7 +201,7 @@ public final class StreamDBClient implements AutoCloseable {
         };
     }
 
-    public int pullToSliceTable(Date day) {
+    public int pullToSliceTable(Instant day) {
         LOGGER.debug("StreamDBClient.pullToSliceTable called for date <{}>", day);
         SelectConditionStep<Record1<Integer>> corruptedLogfilesField = DSL
                 .selectOne()

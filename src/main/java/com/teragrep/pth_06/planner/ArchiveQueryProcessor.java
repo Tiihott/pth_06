@@ -56,11 +56,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 
 /**
  * <h1>Archive Query Processor</h1> Class for controlled execution of Archive query offsets.
@@ -76,8 +73,8 @@ public class ArchiveQueryProcessor implements ArchiveQuery {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ArchiveQueryProcessor.class);
     private final StreamDBClient sdc;
-    private final LocalDate endDay = LocalDate.now(); // FIXME, parametrize end range
-    private LocalDate rollingDay;
+    private final Instant endInstant = Instant.now();
+    private Instant rollingInstant;
     private Long latestOffset = null;
     private final Long earliestEpoch;
     private final long quantumLength;
@@ -103,7 +100,7 @@ public class ArchiveQueryProcessor implements ArchiveQuery {
             EarliestWalker earliestWalker = new EarliestWalker();
             this.earliestEpoch = earliestWalker.fromString(config.query);
             // TODO hack to update startDay from query
-            rollingDay = Instant.ofEpochSecond(this.earliestEpoch).atZone(ZoneId.systemDefault()).toLocalDate();
+            rollingInstant = Instant.ofEpochSecond(this.earliestEpoch);
 
         }
         catch (ParserConfigurationException | IOException | SAXException ex) {
@@ -127,13 +124,13 @@ public class ArchiveQueryProcessor implements ArchiveQuery {
      */
     private void seekToResults() {
         LOGGER.debug("ArchiveQueryProcessor.seekToResults>");
-        int rows = sdc.pullToSliceTable(Date.valueOf(rollingDay));
+        int rows = sdc.pullToSliceTable(rollingInstant);
 
-        LOGGER.debug("Got {} row(s) on {}", rows, rollingDay);
-        while (rows == 0 && rollingDay.isBefore(endDay)) {
-            rollingDay = rollingDay.plusDays(1);
-            rows = sdc.pullToSliceTable(Date.valueOf(rollingDay));
-            LOGGER.debug("Got {} row(s) on {}", rows, rollingDay);
+        LOGGER.debug("Got {} row(s) on {}", rows, rollingInstant);
+        while (rows == 0 && rollingInstant.isBefore(endInstant)) {
+            rollingInstant = rollingInstant.plusSeconds(86400);
+            rows = sdc.pullToSliceTable(rollingInstant);
+            LOGGER.debug("Got {} row(s) on {}", rows, rollingInstant);
         }
     }
 
@@ -186,9 +183,10 @@ public class ArchiveQueryProcessor implements ArchiveQuery {
     public Long incrementAndGetLatestOffset() {
         // Get initial offset as latest offset in the beginning
         // and load that day's events into sliceTable
+        int test = 0;
         if (this.latestOffset == null) {
             this.latestOffset = getInitialOffset();
-            sdc.pullToSliceTable(Date.valueOf(rollingDay));
+            test = sdc.pullToSliceTable(rollingInstant);
         }
 
         // Initialize the batchSizeLimit object to split the data into appropriate sized batches
@@ -200,15 +198,15 @@ public class ArchiveQueryProcessor implements ArchiveQuery {
 
             // SliceTable was empty on latestOffset day
             if (weightedOffsetOfNextHour.isStub) {
-                LOGGER.debug("Weighted offset was empty on day {}", rollingDay);
+                LOGGER.debug("Weighted offset was empty on day {}", rollingInstant);
 
-                // Stop loop on endDay: no future date processing
-                if (rollingDay.isEqual(endDay) || rollingDay.isAfter(endDay)) {
+                // Stop loop on endInstant: no future date processing
+                if (rollingInstant.equals(endInstant) || rollingInstant.isAfter(endInstant)) {
                     break;
                 }
 
                 // Pull next day to sliceTable
-                rollingDay = rollingDay.plusDays(1);
+                rollingInstant = rollingInstant.plusSeconds(86400);
                 seekToResults();
                 weightedOffsetOfNextHour = sdc.getNextHourAndSizeFromSliceTable(this.latestOffset);
             }
