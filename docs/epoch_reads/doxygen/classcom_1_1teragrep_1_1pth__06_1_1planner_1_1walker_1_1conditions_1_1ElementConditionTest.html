@@ -579,16 +579,16 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ElementConditionTest_8java_source.html#l00144">144</a> of file <a class="el" href="ElementConditionTest_8java_source.html">ElementConditionTest.java</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  144</span>                                     {</div>
-<div class="line"><span class="lineno">  145</span>        String[] tags = {</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keyword">final</span> String[] tags = {</div>
 <div class="line"><span class="lineno">  146</span>                <span class="stringliteral">&quot;earliest&quot;</span>, <span class="stringliteral">&quot;latest&quot;</span>, <span class="stringliteral">&quot;index_earliest&quot;</span>, <span class="stringliteral">&quot;index_latest&quot;</span></div>
 <div class="line"><span class="lineno">  147</span>        };</div>
 <div class="line"><span class="lineno">  148</span>        <span class="keywordtype">int</span> loops = 0;</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">for</span> (String tag : tags) {</div>
-<div class="line"><span class="lineno">  150</span>            Element element = document.createElement(tag);</div>
+<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">for</span> (<span class="keyword">final</span> String tag : tags) {</div>
+<div class="line"><span class="lineno">  150</span>            <span class="keyword">final</span> Element element = document.createElement(tag);</div>
 <div class="line"><span class="lineno">  151</span>            element.setAttribute(<span class="stringliteral">&quot;value&quot;</span>, <span class="stringliteral">&quot;1000&quot;</span>);</div>
 <div class="line"><span class="lineno">  152</span>            element.setAttribute(<span class="stringliteral">&quot;operation&quot;</span>, <span class="stringliteral">&quot;EQUALS&quot;</span>);</div>
-<div class="line"><span class="lineno">  153</span>            Condition condition = <span class="keyword">new</span> ElementCondition(element, config).condition();</div>
-<div class="line"><span class="lineno">  154</span>            Assertions.assertTrue(condition.toString().contains(<span class="stringliteral">&quot;date&quot;</span>));</div>
+<div class="line"><span class="lineno">  153</span>            <span class="keyword">final</span> Condition condition = <span class="keyword">new</span> ElementCondition(element, config).condition();</div>
+<div class="line"><span class="lineno">  154</span>            Assertions.assertTrue(condition.toString().contains(<span class="stringliteral">&quot;epoch_hour&quot;</span>));</div>
 <div class="line"><span class="lineno">  155</span>            loops++;</div>
 <div class="line"><span class="lineno">  156</span>        }</div>
 <div class="line"><span class="lineno">  157</span>        Assertions.assertEquals(4, loops);</div>

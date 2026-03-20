@@ -122,16 +122,14 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00062">62</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   62</span>                                {</div>
-<div class="line"><span class="lineno">   63</span>        String e = <span class="stringliteral">&quot;(\n&quot;</span> + <span class="stringliteral">&quot;  \&quot;journaldb\&quot;.\&quot;logfile\&quot;.\&quot;logdate\&quot; &lt;= date &#39;1970-01-01&#39;\n&quot;</span></div>
-<div class="line"><span class="lineno">   64</span>                + <span class="stringliteral">&quot;  and (UNIX_TIMESTAMP(STR_TO_DATE(SUBSTRING(REGEXP_SUBSTR(path,&#39;[0-9]+(\\.log)?\\.gz(\\.[0-9]*)?$&#39;), 1, 10), &#39;%Y%m%d%H&#39;)) &lt;= 1000)\n&quot;</span></div>
-<div class="line"><span class="lineno">   65</span>                + <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">   66</span>        Condition elementCondition = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>).condition();</div>
-<div class="line"><span class="lineno">   67</span>        Assertions.assertEquals(e, elementCondition.toString());</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keyword">final</span> String e = <span class="stringliteral">&quot;\&quot;journaldb\&quot;.\&quot;logfile\&quot;.\&quot;epoch_hour\&quot; &lt;= 1000&quot;</span>;</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keyword">final</span> Condition elementCondition = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>).condition();</div>
+<div class="line"><span class="lineno">   65</span>        Assertions.assertEquals(e, elementCondition.toString());</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_a21e7f8703e63549ebc035cbfead59275_cgraph.svg" width="720" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_a21e7f8703e63549ebc035cbfead59275_cgraph.svg" width="720" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -151,18 +149,16 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00071">71</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>                                       {</div>
-<div class="line"><span class="lineno">   72</span>        String e = <span class="stringliteral">&quot;(\n&quot;</span> + <span class="stringliteral">&quot;  \&quot;journaldb\&quot;.\&quot;logfile\&quot;.\&quot;logdate\&quot; &lt;= date &#39;2000-01-01&#39;\n&quot;</span></div>
-<div class="line"><span class="lineno">   73</span>                + <span class="stringliteral">&quot;  and (UNIX_TIMESTAMP(STR_TO_DATE(SUBSTRING(REGEXP_SUBSTR(path,&#39;[0-9]+(\\.log)?\\.gz(\\.[0-9]*)?$&#39;), 1, 10), &#39;%Y%m%d%H&#39;)) &lt;= 946720800)\n&quot;</span></div>
-<div class="line"><span class="lineno">   74</span>                + <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">   75</span>        Condition elementCondition = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>).condition();</div>
-<div class="line"><span class="lineno">   76</span>        Assertions.assertEquals(e, elementCondition.toString());</div>
-<div class="line"><span class="lineno">   77</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00069">69</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>                                       {</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keyword">final</span> String e = <span class="stringliteral">&quot;\&quot;journaldb\&quot;.\&quot;logfile\&quot;.\&quot;epoch_hour\&quot; &lt;= 946720800&quot;</span>;</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keyword">final</span> Condition elementCondition = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>).condition();</div>
+<div class="line"><span class="lineno">   72</span>        Assertions.assertEquals(e, elementCondition.toString());</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_aa7b1851375afa8c23f5508d2fa35bb5b_cgraph.svg" width="720" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_aa7b1851375afa8c23f5508d2fa35bb5b_cgraph.svg" width="720" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -182,10 +178,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00108">108</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  108</span>                                             {</div>
-<div class="line"><span class="lineno">  109</span>        EqualsVerifier.forClass(LatestCondition.class).withNonnullFields(<span class="stringliteral">&quot;value&quot;</span>).verify();</div>
-<div class="line"><span class="lineno">  110</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00104">104</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>                                             {</div>
+<div class="line"><span class="lineno">  105</span>        EqualsVerifier.forClass(LatestCondition.class).withNonnullFields(<span class="stringliteral">&quot;value&quot;</span>).verify();</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -204,21 +200,21 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00080">80</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                             {</div>
-<div class="line"><span class="lineno">   81</span>        LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">   82</span>        eq1.condition();</div>
-<div class="line"><span class="lineno">   83</span>        LatestCondition eq2 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">   84</span>        LatestCondition eq3 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">   85</span>        eq3.condition();</div>
-<div class="line"><span class="lineno">   86</span>        LatestCondition eq4 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">   87</span>        Assertions.assertEquals(eq1, eq2);</div>
-<div class="line"><span class="lineno">   88</span>        Assertions.assertEquals(eq3, eq4);</div>
-<div class="line"><span class="lineno">   89</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00076">76</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                             {</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keyword">final</span> LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   78</span>        eq1.condition();</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keyword">final</span> LatestCondition eq2 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   80</span>        <span class="keyword">final</span> LatestCondition eq3 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   81</span>        eq3.condition();</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keyword">final</span> LatestCondition eq4 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span>        Assertions.assertEquals(eq1, eq2);</div>
+<div class="line"><span class="lineno">   84</span>        Assertions.assertEquals(eq3, eq4);</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_aaccaab58dbf6125df7b7eab0dc77c627_cgraph.svg" width="720" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1LatestConditionTest_aaccaab58dbf6125df7b7eab0dc77c627_cgraph.svg" width="720" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -238,14 +234,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00099">99</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>                               {</div>
-<div class="line"><span class="lineno">  100</span>        LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">  101</span>        LatestCondition eq2 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">  102</span>        LatestCondition notEq = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>);</div>
-<div class="line"><span class="lineno">  103</span>        Assertions.assertEquals(eq1.hashCode(), eq2.hashCode());</div>
-<div class="line"><span class="lineno">  104</span>        Assertions.assertNotEquals(eq1.hashCode(), notEq.hashCode());</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00095">95</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>                               {</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keyword">final</span> LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keyword">final</span> LatestCondition eq2 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keyword">final</span> LatestCondition notEq = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>);</div>
+<div class="line"><span class="lineno">   99</span>        Assertions.assertEquals(eq1.hashCode(), eq2.hashCode());</div>
+<div class="line"><span class="lineno">  100</span>        Assertions.assertNotEquals(eq1.hashCode(), notEq.hashCode());</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -269,12 +265,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00092">92</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>                                {</div>
-<div class="line"><span class="lineno">   93</span>        LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
-<div class="line"><span class="lineno">   94</span>        LatestCondition notEq = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>);</div>
-<div class="line"><span class="lineno">   95</span>        Assertions.assertNotEquals(eq1, notEq);</div>
-<div class="line"><span class="lineno">   96</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="LatestConditionTest_8java_source.html#l00088">88</a> of file <a class="el" href="LatestConditionTest_8java_source.html">LatestConditionTest.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>                                {</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keyword">final</span> LatestCondition eq1 = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;946720800&quot;</span>);</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keyword">final</span> LatestCondition notEq = <span class="keyword">new</span> LatestCondition(<span class="stringliteral">&quot;1000&quot;</span>);</div>
+<div class="line"><span class="lineno">   91</span>        Assertions.assertNotEquals(eq1, notEq);</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
