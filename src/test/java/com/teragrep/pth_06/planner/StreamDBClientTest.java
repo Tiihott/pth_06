@@ -652,7 +652,7 @@ class StreamDBClientTest {
                 .put(
                         "queryXML",
                         "<AND><AND><index value=\"example\" operation=\"EQUALS\"/></AND><earliest value=\""
-                                + instantZonedDateTime.minusHours(6).toEpochSecond() + "\" operation=\"GE\"/></AND>"
+                                + instantZonedDateTime.minusHours(5).toEpochSecond() + "\" operation=\"GE\"/></AND>"
                 );
         final Config config = new Config(opts);
         Assertions.assertDoesNotThrow(() -> {
