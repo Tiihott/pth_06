@@ -687,13 +687,59 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>    }</div>
 <div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span> </div>
 <div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    @Test</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> equalsHashCodeContractTest() {</div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>        EqualsVerifier</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>                .forClass(StreamDBClient.class)</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>                .withIgnoredFields(<span class="stringliteral">&quot;nestedTopNQuery&quot;</span>)</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>                .withPrefabValues(NestedTopNQuery.class, <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>), <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>)).verify();</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    }</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>}</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> earliestConditionQueryTest() {</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>        <span class="comment">// Add test data to logfile table in journaldb.</span></div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        <span class="keyword">final</span> DSLContext ctx = DSL.using(connection, SQLDialect.MYSQL);</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-04 22:00 UTC-4.</span></div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>        Instant instant = Instant.ofEpochSecond(1696471200L);</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        ZonedDateTime instantZonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>        ZonedDateTime instantPlusHour = instantZonedDateTime.plusHours(1);</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>        LogfileRecord logfileRecord = logfileRecordForEpoch(instantZonedDateTime.toEpochSecond(), <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord).execute();</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>        <span class="comment">// Inserting logfile with logtime of 2023-10-04 23:00 UTC-4.</span></div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>        LogfileRecord logfileRecord2 = logfileRecordForEpoch(instantPlusHour.toEpochSecond(), <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>        ctx.insertInto(JOURNALDB.LOGFILE).set(logfileRecord2).execute();</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>        <span class="comment">// Set EarliestCondition to an epoch that represents 2023-10-04 19:00 UTC-4, for pullToSliceTable() to ignore records with logtime of 2023-10-04 19:00 UTC-4 or older.</span></div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>        <span class="keyword">final</span> Map&lt;String, String&gt; opts = this.opts;</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>        opts.put(<span class="stringliteral">&quot;DBurl&quot;</span>, mariadb.getJdbcUrl());</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>        opts</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>                .put(</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>                        <span class="stringliteral">&quot;queryXML&quot;</span>,</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>                        <span class="stringliteral">&quot;&lt;AND&gt;&lt;AND&gt;&lt;index value=\&quot;example\&quot; operation=\&quot;EQUALS\&quot;/&gt;&lt;/AND&gt;&lt;earliest value=\&quot;&quot;</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>                                + instantZonedDateTime.minusHours(3).toEpochSecond() + <span class="stringliteral">&quot;\&quot; operation=\&quot;GE\&quot;/&gt;&lt;/AND&gt;&quot;</span></div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>                );</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>        <span class="keyword">final</span> Config config = <span class="keyword">new</span> Config(opts);</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>        Assertions.assertDoesNotThrow(() -&gt; {</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>            <span class="keywordflow">try</span> (<span class="keyword">final</span> StreamDBClient sdc = <span class="keyword">new</span> StreamDBClient(config)) {</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>                <span class="comment">// Pull the records from a specific logdate to the slicetable for further processing.</span></div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>                <span class="keywordtype">int</span> rows = sdc.pullToSliceTable(Date.valueOf(instantZonedDateTime.toLocalDate()));</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>                Assertions.assertEquals(2, rows);</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>                <span class="comment">// find the earliest row and assert that it has correct offset/logtime value</span></div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>                Assertions.assertFalse(sdc.getNextHourAndSizeFromSliceTable(0L).isStub);</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>                Assertions</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>                        .assertEquals(instantZonedDateTime.toEpochSecond(), sdc.getNextHourAndSizeFromSliceTable(0L).offset());</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>                <span class="comment">// find the next row after earliest</span></div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>                Assertions</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>                        .assertFalse(sdc.getNextHourAndSizeFromSliceTable(instantZonedDateTime.toEpochSecond()).isStub);</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>                Assertions</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>                        .assertEquals(</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>                                instantPlusHour.toEpochSecond(),</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>                                sdc.getNextHourAndSizeFromSliceTable(instantZonedDateTime.toEpochSecond()).offset()</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>                        );</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>            }</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>        });</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    }</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span> </div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    @Test</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> equalsHashCodeContractTest() {</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>        EqualsVerifier</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>                .forClass(StreamDBClient.class)</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>                .withIgnoredFields(<span class="stringliteral">&quot;nestedTopNQuery&quot;</span>)</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>                .withPrefabValues(NestedTopNQuery.class, <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>), <span class="keyword">new</span> NestedTopNQuery(<span class="keyword">null</span>, <span class="keyword">false</span>)).verify();</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    }</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
