@@ -648,7 +648,12 @@ class StreamDBClientTest {
         // Set includeBeforeEpoch in ArchiveConfig to an epoch that represents 2023-10-04 23:00 UTC-4, for getNextHourAndSizeFromSliceTable() to ignore records with logtime of 2023-10-04 23:00 UTC-4 or newer.
         final Map<String, String> opts = this.opts;
         opts.put("DBurl", mariadb.getJdbcUrl());
-        opts.put("queryXML", "<AND><AND><index value=\"example\" operation=\"EQUALS\"/></AND><earliest value=\""+ instantZonedDateTime.minusHours(6).toEpochSecond() +"\" operation=\"GE\"/></AND>");
+        opts
+                .put(
+                        "queryXML",
+                        "<AND><AND><index value=\"example\" operation=\"EQUALS\"/></AND><earliest value=\""
+                                + instantZonedDateTime.minusHours(6).toEpochSecond() + "\" operation=\"GE\"/></AND>"
+                );
         final Config config = new Config(opts);
         Assertions.assertDoesNotThrow(() -> {
             try (final StreamDBClient sdc = new StreamDBClient(config)) {
@@ -664,7 +669,10 @@ class StreamDBClientTest {
                 Assertions
                         .assertFalse(sdc.getNextHourAndSizeFromSliceTable(instantZonedDateTime.toEpochSecond()).isStub);
                 Assertions
-                        .assertEquals(instantPlusHour.toEpochSecond(), sdc.getNextHourAndSizeFromSliceTable(instantZonedDateTime.toEpochSecond()).offset());
+                        .assertEquals(
+                                instantPlusHour.toEpochSecond(),
+                                sdc.getNextHourAndSizeFromSliceTable(instantZonedDateTime.toEpochSecond()).offset()
+                        );
             }
         });
     }
