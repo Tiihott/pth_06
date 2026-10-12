@@ -154,10 +154,14 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="EpochDayCondition_8java_source.html#l00067">67</a> of file <a class="el" href="EpochDayCondition_8java_source.html">EpochDayCondition.java</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   67</span>                                 {</div>
-<div class="line"><span class="lineno">   68</span>        LocalDate localDate = <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>.toLocalDate();</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> JOURNALDB.LOGFILE.EPOCH_HOUR</div>
-<div class="line"><span class="lineno">   70</span>                .between(ULong.valueOf(localDate.atStartOfDay(ZoneOffset.UTC).toEpochSecond()), ULong.valueOf(localDate.plusDays(1).atStartOfDay(ZoneOffset.UTC).toEpochSecond()));</div>
-<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keyword">final</span> LocalDate localDate = <a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>.toLocalDate();</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keyword">final</span> <span class="keywordtype">long</span> startEpoch = localDate.atStartOfDay(ZoneOffset.UTC).toEpochSecond();</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keyword">final</span> <span class="keywordtype">long</span> endEpoch = localDate.plusDays(1).atStartOfDay(ZoneOffset.UTC).toEpochSecond();</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (startEpoch &lt; 0 || endEpoch &lt; 0) {</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">throw</span> <span class="keyword">new</span> NumberFormatException(<span class="stringliteral">&quot;Date is before 1970-01-01 resulting in negative epoch value.&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> JOURNALDB.LOGFILE.EPOCH_HOUR.between(ULong.valueOf(startEpoch), ULong.valueOf(endEpoch));</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
 <div class="ttc" id="aclasscom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition_html_aa1f390846bbd2b8e06c696aa181b71bb"><div class="ttname"><a href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">com.teragrep.pth_06.planner.walker.conditions.EpochDayCondition.date</a></div><div class="ttdeci">final Date date</div><div class="ttdef"><b>Definition</b> <a href="EpochDayCondition_8java_source.html#l00060">EpochDayCondition.java:60</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -178,14 +182,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EpochDayCondition_8java_source.html#l00074">74</a> of file <a class="el" href="EpochDayCondition_8java_source.html">EpochDayCondition.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>                                          {</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) {</div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keyword">final</span> <a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#a94770f4b987db542e96655b56a2f46a8">EpochDayCondition</a> that = (<a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#a94770f4b987db542e96655b56a2f46a8">EpochDayCondition</a>) o;</div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> Objects.equals(<a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>, that.date);</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EpochDayCondition_8java_source.html#l00078">78</a> of file <a class="el" href="EpochDayCondition_8java_source.html">EpochDayCondition.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>                                          {</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) {</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   81</span>        }</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keyword">final</span> <a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#a94770f4b987db542e96655b56a2f46a8">EpochDayCondition</a> that = (<a class="code hl_function" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#a94770f4b987db542e96655b56a2f46a8">EpochDayCondition</a>) o;</div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> Objects.equals(<a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>, that.date);</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
 <div class="ttc" id="aclasscom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition_html_a94770f4b987db542e96655b56a2f46a8"><div class="ttname"><a href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#a94770f4b987db542e96655b56a2f46a8">com.teragrep.pth_06.planner.walker.conditions.EpochDayCondition.EpochDayCondition</a></div><div class="ttdeci">EpochDayCondition(final Date day)</div><div class="ttdef"><b>Definition</b> <a href="EpochDayCondition_8java_source.html#l00062">EpochDayCondition.java:62</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -215,10 +219,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EpochDayCondition_8java_source.html#l00083">83</a> of file <a class="el" href="EpochDayCondition_8java_source.html">EpochDayCondition.java</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                          {</div>
-<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">return</span> Objects.hashCode(<a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>);</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EpochDayCondition_8java_source.html#l00087">87</a> of file <a class="el" href="EpochDayCondition_8java_source.html">EpochDayCondition.java</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>                          {</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">return</span> Objects.hashCode(<a class="code hl_variable" href="classcom_1_1teragrep_1_1pth__06_1_1planner_1_1walker_1_1conditions_1_1EpochDayCondition.html#aa1f390846bbd2b8e06c696aa181b71bb">date</a>);</div>
+<div class="line"><span class="lineno">   89</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
