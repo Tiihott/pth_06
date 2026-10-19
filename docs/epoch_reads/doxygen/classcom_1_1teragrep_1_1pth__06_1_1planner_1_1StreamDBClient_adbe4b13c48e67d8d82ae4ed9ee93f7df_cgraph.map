@@ -1,16 +1,18 @@
 <map id="com.teragrep.pth_06.planner.StreamDBClient.pullToSliceTable" name="com.teragrep.pth_06.planner.StreamDBClient.pullToSliceTable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,120,239,160"/>
-<area shape="rect" id="Node000002" href="$classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#a432bade7d6310bed1e1b9a405fb53d56" title=" " alt="" coords="599,5,829,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,117,286,91,441,61,585,39,586,44,442,66,287,96,188,123"/>
-<area shape="rect" id="Node000003" href="$classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#adbd659cefc990abe9b2da58d3dae9970" title=" " alt="" coords="877,63,1108,103"/>
-<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="211,157,334,179,489,195,574,197,660,195,746,186,829,169,863,158,896,143,952,108,955,113,898,147,865,163,830,175,746,191,660,200,574,203,489,200,333,184,210,163"/>
-<area shape="rect" id="Node000004" href="$classcom_1_1teragrep_1_1pth__06_1_1planner_1_1NestedTopNQuery.html#ab9a75398ae4f26212f007ce95c24c26f" title=" " alt="" coords="287,105,551,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="239,132,273,130,273,135,239,137"/>
-<area shape="rect" id="Node000006" href="$classcom_1_1teragrep_1_1pth__06_1_1planner_1_1NestedTopNQuery.html#a1774c34559483df5630edaa9bcdc2f35" title=" " alt="" coords="312,235,525,275"/>
-<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="163,158,221,186,288,214,330,228,328,233,286,218,219,190,161,162"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="812,43,882,57,881,62,811,48"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="477,103,598,61,640,47,642,52,600,67,479,108"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="550,110,598,105,863,87,864,93,599,111,551,115"/>
-<area shape="rect" id="Node000005" href="$classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#a03c44f8bbcceea9ce885498f428247cd" title=" " alt="" coords="599,120,829,160"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="551,129,585,131,585,136,551,135"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,184,239,224"/>
+<area shape="rect" id="Node000002" href="$classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#a432bade7d6310bed1e1b9a405fb53d56" title=" " alt="" coords="287,5,517,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,182,201,123,242,90,285,62,314,48,316,53,288,66,245,95,205,127,144,186"/>
+<area shape="rect" id="Node000003" href="$classcom_1_1teragrep_1_1pth__06_1_1ConfiguredLogger.html#adbd659cefc990abe9b2da58d3dae9970" title=" " alt="" coords="565,35,796,75"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="149,182,209,142,247,122,286,105,353,86,422,72,552,57,552,62,422,77,354,91,288,111,249,127,212,147,151,186"/>
+<area shape="rect" id="Node000004" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1LogfileSelection.html#ae9fe5b432fa0283b3e920ef35708a47f" title=" " alt="" coords="295,120,509,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="210,181,300,160,301,166,211,187"/>
+<area shape="rect" id="Node000005" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1LogfileSelection.html#a961353076692e43c7f2c6e4c999a7fc1" title=" " alt="" coords="295,184,509,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="239,201,282,201,282,207,239,207"/>
+<area shape="rect" id="Node000006" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1LogfileSelection.html#a9f1ed318e7dde4f654fcc49842e3d610" title=" " alt="" coords="295,248,509,288"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="211,221,301,242,300,248,210,227"/>
+<area shape="rect" id="Node000007" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1LogfileSelection.html#ad2092163349971294d2187f6f5ecb132" title=" " alt="" coords="295,312,509,352"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="154,222,214,260,288,298,307,305,305,310,286,302,211,264,151,226"/>
+<area shape="rect" id="Node000008" href="$interfacecom_1_1teragrep_1_1pth__06_1_1planner_1_1LogfileSelection.html#a5dee0969e35ee5a55f635c29e38ade31" title=" " alt="" coords="295,376,509,416"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="141,223,200,291,242,329,288,362,300,368,298,373,285,366,238,333,196,295,137,226"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="518,35,552,38,552,44,517,40"/>
 </map>

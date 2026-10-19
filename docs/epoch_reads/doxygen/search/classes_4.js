@@ -11,7 +11,8 @@ var searchData=
   ['epochmicrostest_8',['EpochMicrosTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EpochMicrosTest.html',1,'com::teragrep::pth_06::task::s3']]],
   ['epochmigrationrowconverter_9',['EpochMigrationRowConverter',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EpochMigrationRowConverter.html',1,'com::teragrep::pth_06::task::s3']]],
   ['epochmigrationrowconvertertest_10',['EpochMigrationRowConverterTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EpochMigrationRowConverterTest.html',1,'com::teragrep::pth_06::task::s3']]],
-  ['epochmigrationtest_11',['EpochMigrationTest',['../classcom_1_1teragrep_1_1pth__06_1_1EpochMigrationTest.html',1,'com::teragrep::pth_06']]],
-  ['eventmetadatatest_12',['EventMetadataTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EventMetadataTest.html',1,'com::teragrep::pth_06::task::s3']]],
-  ['eventtoorigintest_13',['EventToOriginTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EventToOriginTest.html',1,'com::teragrep::pth_06::task::s3']]]
+  ['epochmigrationselection_11',['EpochMigrationSelection',['../classcom_1_1teragrep_1_1pth__06_1_1planner_1_1EpochMigrationSelection.html',1,'com::teragrep::pth_06::planner']]],
+  ['epochmigrationtest_12',['EpochMigrationTest',['../classcom_1_1teragrep_1_1pth__06_1_1EpochMigrationTest.html',1,'com::teragrep::pth_06']]],
+  ['eventmetadatatest_13',['EventMetadataTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EventMetadataTest.html',1,'com::teragrep::pth_06::task::s3']]],
+  ['eventtoorigintest_14',['EventToOriginTest',['../classcom_1_1teragrep_1_1pth__06_1_1task_1_1s3_1_1EventToOriginTest.html',1,'com::teragrep::pth_06::task::s3']]]
 ];
